@@ -3,8 +3,8 @@
 struct ad
 {
     char name[30];
-    char disease[30];
-    int cabin,phone,age;
+    char status[30];
+    int bedno,phone,age;
 } x[100];
 int n,i,j=0,a=0,sum=0,g,flag,num;
 void read();
@@ -19,33 +19,7 @@ int main()
     read();
     int c,i,q;
     printf("Simple Hospital Management System\n");
-    int m,n;
-//making out the pattern
     
-    for(m=1; m<=4; m++)
-    {
-        for(n=1; n<=5; n++)
-            printf(" ");
-        for(n=1; n<=m-1; n++)
-        {
-            printf(" ");
-        }
-        for(n=1; n<=4-m+1; n++)
-        {
-            if(n==4-m+1 || m==1 || m==4)
-                printf("*");
-            else
-                printf(" ");
-        }
-        for(n=1; n<=4-m+1; n++)
-        {
-            if(n==1 ||m==1 || m==4)
-                printf("*");
-            else
-                printf(" ");
-        }
-        printf("\n");
-    }
     while(c!=6)
     {
 
@@ -105,14 +79,14 @@ void add()
         printf("Enter patient's Name = ");
         gets(x[i].name);
         fflush(stdin);
-        printf("Enter disease = ");
-        gets(x[i].disease);
+        printf("Enter status = ");
+        gets(x[i].status);
         fflush(stdin);
         printf("Enter the age = ");
         scanf("%d",&x[i].age);
         fflush(stdin);
-        printf("Enter cabin no = ");
-        scanf("%d",&x[i].cabin);
+        printf("Enter bed no = ");
+        scanf("%d",&x[i].bedno);
         fflush(stdin);
         printf("Enter phone number = ");
         scanf("%d",&x[i].phone);
@@ -132,9 +106,9 @@ void view()
         printf("Serial Number=%d\n",i);
         printf("Name = ");
         puts(x[i].name);
-        printf("Disease = ");
-        puts(x[i].disease);
-        printf("Cabin no = %d\nPhone number = 0%d\nAge=%d",x[i].cabin,x[i].phone,x[i].age);
+        printf("Status = ");
+        puts(x[i].status);
+        printf("Bed no = %d\nPhone number = 0%d\nAge=%d",x[i].bedno,x[i].phone,x[i].age);
         printf("\n\n");
     }
 }
@@ -144,7 +118,7 @@ void edit()
     fflush(stdin);
     printf("What do you want to edit ?\n");
     printf("Enter your option\n");
-    printf("1.Name\n2.Disease\n3.Age\n4.Cabin\n5.Phone no.\n");
+    printf("1.Name\n2.Status\n3.Age\n4.Bed no\n5.Phone no.\n");
     printf("Option=");
     scanf("%d",&q);//option
     if(q<=5)
@@ -163,8 +137,8 @@ void edit()
             else if(q==2)
             {
                 fflush(stdin);
-                printf("Enter the new Disease=");
-                gets(x[p].disease);
+                printf("Enter the new status=");
+                gets(x[p].status);
             }
             else if(q==3)
             {
@@ -176,8 +150,8 @@ void edit()
             else if(q==4)
             {
                 fflush(stdin);
-                printf("Enter the new Cabin no=");
-                scanf("%d",&x[p].cabin);
+                printf("Enter the new bed no=");
+                scanf("%d",&x[p].bedno);
             }
 
             else if(q==5)
@@ -202,7 +176,7 @@ void search()
     int s,h,f;
     char u[100];
     printf("By what do you want to search ?\n");
-    printf("1.Serial no.\n2.Name\n3.Disease\n4.Cabin no.\n5.Phone no.\n6.Age\n\nOption = ");
+    printf("1.Serial no.\n2.Name\n3.Status\n4.Bed no.\n5.Phone no.\n6.Age\n\nOption = ");
     scanf("%d",&h);
     if(h==1)
     {
@@ -214,9 +188,9 @@ void search()
             printf("Serial Number=%d\n",s);
             printf("Name = ");
             puts(x[s].name);
-            printf("Disease = ");
-            puts(x[s].disease);
-            printf("Cabin no = %d\nPhone number = 0%d\nAge = %d",x[s].cabin,x[s].phone,x[s].age);
+            printf("Status = ");
+            puts(x[s].status);
+            printf("Bed no = %d\nPhone number = 0%d\nAge = %d",x[s].bedno,x[s].phone,x[s].age);
             printf("\n\n");
         }
         else
@@ -237,9 +211,9 @@ void search()
                 printf("Serial Number=%d\n",g);
                 printf("Name = ");
                 puts(x[g].name);
-                printf("Disease = ");
-                puts(x[g].disease);
-                printf("Cabin no = %d\nPhone number = 0%d\nAge = %d",x[g].cabin,x[g].phone,x[g].age);
+                printf("Status = ");
+                puts(x[g].status);
+                printf("Bed no = %d\nPhone number = 0%d\nAge = %d",x[g].bedno,x[g].phone,x[g].age);
                 printf("\n\n");
                 f=0;
 
@@ -255,20 +229,20 @@ void search()
     {
         int f=1;
         fflush(stdin);
-        printf("Enter Disease = ");
+        printf("Enter Status = ");
         gets(u);
         fflush(stdin);
         for(g=0; g<num; g++)
         {
-            if(strcmp(u,x[g].disease)==0)
+            if(strcmp(u,x[g].status)==0)
             {
                 printf("\n");
                 printf("Serial Number=%d\n",g);
                 printf("Name = ");
                 puts(x[g].name);
-                printf("Disease = ");
-                puts(x[g].disease);
-                printf("Cabin no = %d\nPhone number = 0%d\nAge = %d",x[g].cabin,x[g].phone,x[g].age);
+                printf("Status = ");
+                puts(x[g].status);
+                printf("Bed no = %d\nPhone number = 0%d\nAge = %d",x[g].bedno,x[g].phone,x[g].age);
                 printf("\n\n");
                 f=0;
             }
@@ -283,19 +257,19 @@ void search()
     else if(h==4)
     {
         int f=1;
-        printf("Enter Cabin number = ");
+        printf("Enter Bed number = ");
         scanf("%d",&f);
         for(g=0; g<num; g++)
         {
-            if(f==x[g].cabin)
+            if(f==x[g].bedno)
             {
                 printf("\n");
                 printf("Serial Number=%d\n",g);
                 printf("Name = ");
                 puts(x[g].name);
-                printf("Disease = ");
-                puts(x[g].disease);
-                printf("Cabin no = %d\nPhone number = 0%d\nAge = %d",x[g].cabin,x[g].phone,x[g].age);
+                printf("Status = ");
+                puts(x[g].status);
+                printf("Bed no = %d\nPhone number = 0%d\nAge = %d",x[g].bedno,x[g].phone,x[g].age);
                 printf("\n\n");
                 f=0;
             }
@@ -318,9 +292,9 @@ void search()
                 printf("Serial Number=%d\n",g);
                 printf("Name = ");
                 puts(x[g].name);
-                printf("Disease = ");
-                puts(x[g].disease);
-                printf("Cabin no = %d\nPhone number = 0%d\nAge = %d",x[g].cabin,x[g].phone,x[g].age);
+                printf("Status = ");
+                puts(x[g].status);
+                printf("Bed no = %d\nPhone number = 0%d\nAge = %d",x[g].bedno,x[g].phone,x[g].age);
                 printf("\n\n");
                 f=0;
             }
@@ -342,9 +316,9 @@ void search()
                 printf("Serial Number=%d\n",g);
                 printf("Name = ");
                 puts(x[g].name);
-                printf("Disease = ");
-                puts(x[g].disease);
-                printf("Cabin no = %d\nPhone number = 0%d\nAge = %d",x[g].cabin,x[g].phone,x[g].age);
+                printf("Status = ");
+                puts(x[g].status);
+                printf("Bed no = %d\nPhone number = 0%d\nAge = %d",x[g].bedno,x[g].phone,x[g].age);
                 printf("\n\n");
                 f=0;
             }
@@ -369,16 +343,16 @@ void del()
     if(f<num)
     {
         printf("What do you want ?\n");
-        printf("1.Remove the whole record\n2.Remove Name\n3.Remove Disease\n4.Remove age\n5.Remove Cabin\n6.Remove phone number\nOption = ");
+        printf("1.Remove the whole record\n2.Remove Name\n3.Remove Status\n4.Remove age\n5.Remove Bed no\n6.Remove phone number\nOption = ");
         scanf("%d",&h);
         if(h==1)
         {
             while(f<num)
             {
                 strcpy(x[f].name,x[f+1].name);
-                strcpy(x[f].disease,x[f+1].disease);
+                strcpy(x[f].status,x[f+1].status);
                 x[f].age=x[f+1].age;
-                x[f].cabin=x[f+1].cabin;
+                x[f].bedno=x[f+1].bedno;
                 x[f].phone=x[f+1].phone;
                 f++;
             } 
@@ -391,7 +365,7 @@ void del()
         }
         else if(h==3)
         {
-            strcpy(x[f].disease,"Cleared");
+            strcpy(x[f].status,"Cleared");
         }
         else if(h==4)
         {
@@ -399,7 +373,7 @@ void del()
         }                                             
         else if(h==5)
         {
-            x[f].cabin=0;
+            x[f].bedno=0;
         }
         else if(h==6)
         {
