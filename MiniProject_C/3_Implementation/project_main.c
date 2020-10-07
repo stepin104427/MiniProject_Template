@@ -64,7 +64,7 @@ int main()
         {
             while(test!=3)
             {
-                printf("**Enter your choice**\n\n1. View Information\n2. Edit Information\n3. Exit\n\nOption=");
+                printf("**Enter your choice**\n\n1. View Information\n2. Edit Information\n3. Back to main menu\n\nOption=");
                 scanf("%d",&test);//choice for option
                 fflush(stdin);//making it clear
                 if(test==1)
@@ -88,8 +88,7 @@ int main()
                 }
                 else if(test==3)
                 {
-                    write();
-                    return 0;
+                    main();
                 }
                 
                 else
@@ -252,7 +251,7 @@ void search()
         else
             printf("\n\nNot Found\n\n");
     }
-    else if(h==2)//problem is here.........
+    else if(h==2)
     {
         int f=1;
         fflush(stdin);
