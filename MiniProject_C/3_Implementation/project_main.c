@@ -7,7 +7,7 @@ struct ad
     char status[30];
     int bedno,phone,age;
 } x[200];
-int n,i,j=0,a=0,sum=0,g,flag,num;
+int n,i,j=0,a=0,sum=0,g,flag,num,bed_count;
 void read();
 void add();
 void view();
@@ -399,7 +399,7 @@ void read()
     
     }
 
-    num = fread(x, sizeof(struct ad),100, fp);
+    num = fread(x, sizeof(struct ad),200, fp);
     fclose(fp);
 }
 void write()
