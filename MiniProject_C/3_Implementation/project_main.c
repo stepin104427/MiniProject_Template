@@ -54,8 +54,8 @@ int main()
         }
         else if(c==6)
         {
-            printf("Total number of beds = 200");
-            printf("Number of beds available = %d",bed_count);
+            printf("Total number of beds = 200\n");
+            printf("Number of beds available = %d\n",bed_count);
         }
         else if(c==7)
         {
@@ -77,7 +77,7 @@ void add()
     printf("How many entry do you want to add=\n");
     scanf("%d",&n);
     sum=n+num;
-    bed_count=bed_count-sum;
+    bed_count=bed_count-n;
 
     for(i=num,j=0; i<sum; i++)
     {
@@ -364,7 +364,7 @@ void del()
                 f++;
             } 
             num--;
-            bed_count=bed_count-1;
+            bed_count=bed_count+1;
         }
         else if(h==2)
         {
@@ -407,6 +407,7 @@ void read()
     }
 
     num = fread(x, sizeof(struct ad),200, fp);
+    bed_count=bed_count-num;
     fclose(fp);
 }
 void write()
