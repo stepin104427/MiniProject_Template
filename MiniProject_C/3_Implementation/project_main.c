@@ -6,7 +6,7 @@ struct ad
     char name[30];
     char status[30];
     int bedno,phone,age;
-} x[100];
+} x[200];
 int n,i,j=0,a=0,sum=0,g,flag,num;
 void read();
 void add();
