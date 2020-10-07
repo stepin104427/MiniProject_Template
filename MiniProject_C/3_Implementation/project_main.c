@@ -17,8 +17,7 @@ void search();
 void edit();
 void del();
 void write();
-void view_test();
-void edit_test();
+
 int main()
 {
     read();
@@ -76,12 +75,16 @@ int main()
                 }
                 else if(test==2)
                 {
+                    int d,p,n;
                     printf("Enter total number of tests done = \n");
-                    scanf("%d",&done);
+                    scanf("%d",&d);
+                    done=done+d;
                     printf("Enter number of test results positive = \n");
-                    scanf("%d",&positive);
+                    scanf("%d",&p);
+                    positive=positive+p;
                     printf("Enter number of test results negative = \n");
-                    scanf("%d",&negative);
+                    scanf("%d",&n);
+                    negative=negative+n;
                 }
                 else if(test==3)
                 {
@@ -463,14 +466,5 @@ void write()
     fclose(fp);
 }
 
-void view_test()
-{
 
-}
-
-void edit_test()
-{
-    
-    
-}
 
