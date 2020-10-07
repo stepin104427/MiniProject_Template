@@ -65,22 +65,22 @@ int main()
         {
             while(test!=3)
             {
-                printf("**Enter your choice**\1. View Information\n2. Edit Information\n3. Exit\n\nOption=");
+                printf("**Enter your choice**\n\n1. View Information\n2. Edit Information\n3. Exit\n\nOption=");
                 scanf("%d",&test);//choice for option
                 fflush(stdin);//making it clear
                 if(test==1)
                 {
-                    printf("Total number of tests done = %d",done);
-                    printf("Number of test results positive = %d",positive);
-                    printf("Number of test results negative = %d",negative);
+                    printf("Total number of tests done = %d\n",done);
+                    printf("Number of test results positive = %d\n",positive);
+                    printf("Number of test results negative = %d\n",negative);
                 }
                 else if(test==2)
                 {
-                    printf("Enter total number of tests done = ");
+                    printf("Enter total number of tests done = \n");
                     scanf("%d",&done);
-                    printf("Enter number of test results positive = %d",positive);
+                    printf("Enter number of test results positive = \n");
                     scanf("%d",&positive);
-                    printf("Enter number of test results negative = %d",negative);
+                    printf("Enter number of test results negative = \n");
                     scanf("%d",&negative);
                 }
                 else if(test==3)
