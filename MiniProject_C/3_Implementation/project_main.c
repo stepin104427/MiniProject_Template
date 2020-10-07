@@ -8,12 +8,8 @@ struct ad
     int bedno,phone,age;
 } x[200];
 
-struct tests
-{
-    double date;
-    int done,positive,negative;
-}y[200];
-int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200;
+
+int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,done,positive,negative;
 void read();
 void add();
 void view();
@@ -69,24 +65,30 @@ int main()
         {
             while(test!=3)
             {
-                printf("**Enter your choice**\n\n1. View Information\n2. Edit Information\n3. Exit\n\nOption=");
+                printf("**Enter your choice**\1. View Information\n2. Edit Information\n3. Exit\n\nOption=");
                 scanf("%d",&test);//choice for option
                 fflush(stdin);//making it clear
                 if(test==1)
                 {
-                    system("cls");
-                    view_test();
+                    printf("Total number of tests done = %d",done);
+                    printf("Number of test results positive = %d",positive);
+                    printf("Number of test results negative = %d",negative);
                 }
                 else if(test==2)
                 {
-                    system("cls");
-                    edit_test();
+                    printf("Enter total number of tests done = ");
+                    scanf("%d",&done);
+                    printf("Enter number of test results positive = %d",positive);
+                    scanf("%d",&positive);
+                    printf("Enter number of test results negative = %d",negative);
+                    scanf("%d",&negative);
                 }
                 else if(test==3)
                 {
                     write();
                     return 0;
                 }
+                
                 else
                 {
                     system("cls");
