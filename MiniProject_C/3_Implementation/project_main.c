@@ -9,7 +9,7 @@ struct ad
 } x[200];
 
 
-int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,done,positive,negative,tot,recovered,deceased,reason;
+int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,done,positive,negative,tot,recovered,deceased,reason,d,p,n;
 void read();
 void add();
 void view();
@@ -24,10 +24,10 @@ int main()
     int c,i,q,test;
     printf("Simple Hospital Management System\n");
     
-    while(c!=9)
+    while(c!=10)
     {
 
-        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. Covid test information\n8. Total patients statistics\n9. Exit\n\nOption=");
+        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. View test information\n8. Edit test information\n9. Total patients statistics\n10. Exit\n\nOption=");
         scanf("%d",&c);//choice for option
         fflush(stdin);//making it clear
         if(c==1)//add
@@ -62,50 +62,30 @@ int main()
         }
         else if(c==7)
         {
-            while(test!=3)
-            {
-                printf("**Enter your choice**\n\n1. View Information\n2. Edit Information\n3. Back to main menu\n\nOption=");
-                scanf("%d",&test);//choice for option
-                fflush(stdin);//making it clear
-                if(test==1)
-                {
-                    printf("Total number of tests done = %d\n",done);
-                    printf("Number of test results positive = %d\n",positive);
-                    printf("Number of test results negative = %d\n",negative);
-                }
-                else if(test==2)
-                {
-                    int d,p,n;
-                    printf("Enter total number of tests done = \n");
-                    scanf("%d",&d);
-                    done=done+d;
-                    printf("Enter number of test results positive = \n");
-                    scanf("%d",&p);
-                    positive=positive+p;
-                    printf("Enter number of test results negative = \n");
-                    scanf("%d",&n);
-                    negative=negative+n;
-                }
-                else if(test==3)
-                {
-                    main();
-                }
-                
-                else
-                {
-                    system("cls");
-                    printf("\n\nInvalid input , try again by using valid inputs");
-                }
-                
-            }
+            printf("Total number of tests done = %d\n",done);
+            printf("Number of test results positive = %d\n",positive);
+            printf("Number of test results negative = %d\n",negative);
         }
         else if(c==8)
+        {
+            printf("Enter total number of tests done = \n");
+            scanf("%d",&d);
+            done=done+d;
+            printf("Enter number of test results positive = \n");
+            scanf("%d",&p);
+            positive=positive+p;
+            printf("Enter number of test results negative = \n");
+            scanf("%d",&n);
+            negative=negative+n;
+            
+        }
+        else if(c==9)
         {
             printf("Total cases = %d\n",tot+num+positive);
             printf("Recovered = %d\n",recovered);
             printf("Deceased = %d\n",deceased);
         }
-        else if(c==9)
+        else if(c==10)
         {
             write();
             return 0;
@@ -125,7 +105,7 @@ void add()
     printf("How many entry do you want to add=\n");
     scanf("%d",&n);
     sum=n+num;
-    bed_count=bed_count-n;
+    bed_count=bed_count-sum;
 
     for(i=num,j=0; i<sum; i++)
     {
@@ -473,6 +453,7 @@ void read()
     num = fread(x, sizeof(struct ad),200, fp);
     bed_count=bed_count-num;
     fclose(fp);
+    
 }
 void write()
 {
