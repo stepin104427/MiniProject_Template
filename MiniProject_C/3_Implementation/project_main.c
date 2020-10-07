@@ -7,6 +7,12 @@ struct ad
     char status[30];
     int bedno,phone,age;
 } x[200];
+
+struct tests
+{
+    double date;
+    int done,positive,negative;
+}y[200];
 int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200;
 void read();
 void add();
@@ -15,16 +21,18 @@ void search();
 void edit();
 void del();
 void write();
+void view_test();
+void edit_test();
 int main()
 {
     read();
-    int c,i,q;
+    int c,i,q,test;
     printf("Simple Hospital Management System\n");
     
-    while(c!=7)
+    while(c!=8)
     {
 
-        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. Exit\n\nOption=");
+        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. Covid test information\n8. Exit\n\nOption=");
         scanf("%d",&c);//choice for option
         fflush(stdin);//making it clear
         if(c==1)//add
@@ -58,6 +66,36 @@ int main()
             printf("Number of beds available = %d\n",bed_count);
         }
         else if(c==7)
+        {
+            while(test!=3)
+            {
+                printf("**Enter your choice**\n\n1. View Information\n2. Edit Information\n3. Exit\n\nOption=");
+                scanf("%d",&test);//choice for option
+                fflush(stdin);//making it clear
+                if(test==1)
+                {
+                    system("cls");
+                    view_test();
+                }
+                else if(test==2)
+                {
+                    system("cls");
+                    edit_test();
+                }
+                else if(test==3)
+                {
+                    write();
+                    return 0;
+                }
+                else
+                {
+                    system("cls");
+                    printf("\n\nInvalid input , try again by using valid inputs");
+                }
+                
+            }
+        }
+        else if(c==8)
         {
             write();
             return 0;
@@ -421,5 +459,16 @@ void write()
     fwrite(x, sizeof(struct ad),num, fp);
 
     fclose(fp);
+}
+
+void view_test()
+{
+
+}
+
+void edit_test()
+{
+    
+    
 }
 
