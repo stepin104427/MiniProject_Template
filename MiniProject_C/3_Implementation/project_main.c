@@ -7,7 +7,7 @@ struct ad
     char status[30];
     int bedno,phone,age;
 } x[200];
-int n,i,j=0,a=0,sum=0,g,flag,num,bed_count;
+int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200;
 void read();
 void add();
 void view();
@@ -21,10 +21,10 @@ int main()
     int c,i,q;
     printf("Simple Hospital Management System\n");
     
-    while(c!=6)
+    while(c!=7)
     {
 
-        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. Exit\n\nOption=");
+        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. Exit\n\nOption=");
         scanf("%d",&c);//choice for option
         fflush(stdin);//making it clear
         if(c==1)//add
@@ -54,6 +54,11 @@ int main()
         }
         else if(c==6)
         {
+            printf("Total number of beds = 200");
+            printf("Number of beds available = %d",bed_count);
+        }
+        else if(c==7)
+        {
             write();
             return 0;
         }
@@ -72,6 +77,7 @@ void add()
     printf("How many entry do you want to add=\n");
     scanf("%d",&n);
     sum=n+num;
+    bed_count=bed_count-sum;
 
     for(i=num,j=0; i<sum; i++)
     {
@@ -358,6 +364,7 @@ void del()
                 f++;
             } 
             num--;
+            bed_count=bed_count-1;
         }
         else if(h==2)
         {
