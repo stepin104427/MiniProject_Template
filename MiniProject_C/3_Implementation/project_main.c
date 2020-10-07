@@ -66,6 +66,8 @@ int main()
         else if(c==7)
         {
             printf("\n");
+            printf("*Total tests done for today*");
+            printf("\n");
             printf("Total number of tests done = %d\n",y[0].total);
             printf("Number of test results positive = %d\n",y[0].pos);
             printf("Number of test results negative = %d\n",y[0].neg);
