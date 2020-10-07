@@ -7,9 +7,12 @@ struct ad
     char status[30];
     int bedno,phone,age;
 } x[200];
+struct tests
+{
+    long total,pos,neg;
+}y[1];
 
-
-int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,done,positive,negative,tot,recovered,deceased,reason,d,p,n;
+int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,tot,done,positive,negative,d,p,n;
 void read();
 void add();
 void view();
@@ -17,17 +20,17 @@ void search();
 void edit();
 void del();
 void write();
-
+void add_test();
 int main()
 {
     read();
     int c,i,q,test;
     printf("Simple Hospital Management System\n");
     
-    while(c!=10)
+    while(c!=9)
     {
 
-        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. View test information\n8. Edit test information\n9. Total patients statistics\n10. Exit\n\nOption=");
+        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. View test information\n8. Edit test information\n9. Exit\n\nOption=");
         scanf("%d",&c);//choice for option
         fflush(stdin);//making it clear
         if(c==1)//add
@@ -62,30 +65,18 @@ int main()
         }
         else if(c==7)
         {
-            printf("Total number of tests done = %d\n",done);
-            printf("Number of test results positive = %d\n",positive);
-            printf("Number of test results negative = %d\n",negative);
+            printf("\n");
+            printf("Total number of tests done = %d\n",y[0].total);
+            printf("Number of test results positive = %d\n",y[0].pos);
+            printf("Number of test results negative = %d\n",y[0].neg);
+            printf("\n");
         }
         else if(c==8)
         {
-            printf("Enter total number of tests done = \n");
-            scanf("%d",&d);
-            done=done+d;
-            printf("Enter number of test results positive = \n");
-            scanf("%d",&p);
-            positive=positive+p;
-            printf("Enter number of test results negative = \n");
-            scanf("%d",&n);
-            negative=negative+n;
-            
+            system("cls");
+            add_test();
         }
         else if(c==9)
-        {
-            printf("Total cases = %d\n",tot+num+positive);
-            printf("Recovered = %d\n",recovered);
-            printf("Deceased = %d\n",deceased);
-        }
-        else if(c==10)
         {
             write();
             return 0;
@@ -105,7 +96,7 @@ void add()
     printf("How many entry do you want to add=\n");
     scanf("%d",&n);
     sum=n+num;
-    bed_count=bed_count-sum;
+    bed_count=bed_count-n;
 
     for(i=num,j=0; i<sum; i++)
     {
@@ -393,22 +384,6 @@ void del()
             } 
             num--;
             bed_count++;
-            printf("Reason: 1. Recovered 2. Deceased\n Enter choice =");
-            scanf("%d",&reason);
-            if(reason==1)
-            {
-                recovered++;
-            }
-            else if(reason==2)
-            {
-                deceased++;
-            }
-            else
-            {
-                system("cls");
-                printf("\n\nInvalid input , try again by using valid inputs");
-            }
-            
         }
         else if(h==2)
         {
@@ -453,6 +428,16 @@ void read()
     num = fread(x, sizeof(struct ad),200, fp);
     bed_count=bed_count-num;
     fclose(fp);
+    FILE *fptr;
+    fptr = fopen("statistics.txt","r");
+    if(fptr == NULL)
+    {
+        fp = fopen("statistics.txt","rb+");
+        fclose(fptr);
+        printf("File does not exist, I JUST CREATED IT, exiting...\n\n\n");             
+    }
+    fread(y, sizeof(struct tests),1, fptr);
+    fclose(fptr);
     
 }
 void write()
@@ -466,7 +451,31 @@ void write()
     fwrite(x, sizeof(struct ad),num, fp);
 
     fclose(fp);
+    FILE *fptr = fopen("statistics.txt","wb+");
+    if(fptr == NULL)
+    {
+        printf("Error");
+        exit(1);
+    }
+    fwrite(y, sizeof(struct tests),1, fptr);
+    fclose(fptr);
 }
 
+void add_test()
+{
+    
+    printf("\n");
+    fflush(stdin);
+    printf("Enter total number of tests done = \n");
+    scanf("%d",&y[0].total);
+    fflush(stdin);
+    printf("Enter number of test results positive = \n");
+    scanf("%d",&y[0].pos);
+    fflush(stdin);
+    printf("Enter number of test results negative = \n");
+    scanf("%d",&y[0].neg);
+    fflush(stdin);
+    printf("\n");
+}
 
 
