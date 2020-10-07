@@ -9,7 +9,7 @@ struct ad
 } x[200];
 
 
-int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,done,positive,negative;
+int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,done,positive,negative,tot,recovered,deceased,reason;
 void read();
 void add();
 void view();
@@ -24,10 +24,10 @@ int main()
     int c,i,q,test;
     printf("Simple Hospital Management System\n");
     
-    while(c!=8)
+    while(c!=9)
     {
 
-        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. Covid test information\n8. Exit\n\nOption=");
+        printf("**Enter your choice**\n\n1. Add Information\n2. View Information\n3. Search\n4. Edit Information\n5. Delete Information\n6. View available beds\n7. Covid test information\n8. Total patients statistics\n9. Exit\n\nOption=");
         scanf("%d",&c);//choice for option
         fflush(stdin);//making it clear
         if(c==1)//add
@@ -101,6 +101,12 @@ int main()
             }
         }
         else if(c==8)
+        {
+            printf("Total cases = %d\n",tot+num+positive);
+            printf("Recovered = %d\n",recovered);
+            printf("Deceased = %d\n",deceased);
+        }
+        else if(c==9)
         {
             write();
             return 0;
@@ -407,7 +413,23 @@ void del()
                 f++;
             } 
             num--;
-            bed_count=bed_count+1;
+            bed_count++;
+            printf("Reason: 1. Recovered 2. Deceased\n Enter choice =");
+            scanf("%d",&reason);
+            if(reason==1)
+            {
+                recovered++;
+            }
+            else if(reason==2)
+            {
+                deceased++;
+            }
+            else
+            {
+                system("cls");
+                printf("\n\nInvalid input , try again by using valid inputs");
+            }
+            
         }
         else if(h==2)
         {
