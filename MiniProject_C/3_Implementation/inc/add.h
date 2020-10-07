@@ -1,10 +1,10 @@
-#ifndef __ADD_H__
-#define __ADD_H__
+#ifndef __VIEW_H__
+#define __VIEW_H__
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void add()
+void view()
  
 
 #endif  
