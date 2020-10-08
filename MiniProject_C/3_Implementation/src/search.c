@@ -1,5 +1,5 @@
 
-#include<del.h>
+#include"del.h"
 void del()
 {
     int f,h;
