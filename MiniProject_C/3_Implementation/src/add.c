@@ -1,5 +1,5 @@
 
-#include<view.h>
+#include"view.h"
 void view()
 {
     for(i=0; i<num; i++)
