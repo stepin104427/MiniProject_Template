@@ -1,5 +1,5 @@
 
-#include<search.h>
+#include"search.h"
 void search()
 {
     int s,h,f;
