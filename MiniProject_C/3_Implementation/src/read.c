@@ -1,6 +1,6 @@
 
-#include<write.h>
-#include<struct.h>
+#include"write.h"
+#include"struct.h"
 void write()
 {
     FILE *fp = fopen("patient.txt","w");
