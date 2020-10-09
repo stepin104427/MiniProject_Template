@@ -12,7 +12,7 @@ struct tests
     long total,pos,neg;
 }y[1];
 
-int n,i,j=0,a=0,sum=0,g,flag,num,bed_count=200,tot,done,positive,negative,d,p,n;
+int bed_count=200,num;
 void read();
 void add();
 void view();
@@ -24,7 +24,7 @@ void add_test();
 int main()
 {
     read();
-    int c,i,q,test;
+    int c;
     printf("Simple Hospital Management System\n");
     
     while(c!=9)
@@ -93,6 +93,7 @@ int main()
 }
 void add()
 {
+    int n,sum;
     printf("\n\n");
     printf("Already data inputed on the database =%d\n\n",num);//how many inputs
     printf("How many entry do you want to add=\n");
@@ -100,7 +101,7 @@ void add()
     sum=n+num;
     bed_count=bed_count-n;
 
-    for(i=num,j=0; i<sum; i++)
+    for(int i=num,j=0; i<sum; i++)
     {
         printf("\n");
         fflush(stdin);
@@ -121,14 +122,13 @@ void add()
         fflush(stdin);
         printf("\n");
         j++;
-        a++;
         num++;
     }
 }
 
 void view()
 {
-    for(i=0; i<num; i++)
+    for(int i=0; i<num; i++)
     {
         printf("\n");
         printf("Serial Number=%d\n",i);
@@ -201,7 +201,7 @@ void edit()
 }
 void search()
 {
-    int s,h,f;
+    int s,h;
     char u[100];
     printf("By what do you want to search ?\n");
     printf("1.Serial no.\n2.Name\n3.Status\n4.Bed no.\n5.Phone no.\n6.Age\n\nOption = ");
@@ -231,7 +231,7 @@ void search()
         printf("Enter your name=");
         gets(u);
         fflush(stdin);
-        for(g=0; g<num; g++)
+        for(int g=0; g<num; g++)
         {
             if(strcmp(u,x[g].name)==0)
             {
@@ -249,9 +249,6 @@ void search()
         }
         if(f==1)
             printf("\nNot Found\n");
-
-
-
     }
     else if(h==3)
     {
@@ -260,7 +257,7 @@ void search()
         printf("Enter Status = ");
         gets(u);
         fflush(stdin);
-        for(g=0; g<num; g++)
+        for(int g=0; g<num; g++)
         {
             if(strcmp(u,x[g].status)==0)
             {
@@ -274,20 +271,16 @@ void search()
                 printf("\n\n");
                 f=0;
             }
-
-
         }
         if(f==1)
             printf("\nNot Found\n");
-
-
     }
     else if(h==4)
     {
         int f=1;
         printf("Enter Bed number = ");
         scanf("%d",&f);
-        for(g=0; g<num; g++)
+        for(int g=0; g<num; g++)
         {
             if(f==x[g].bedno)
             {
@@ -301,18 +294,16 @@ void search()
                 printf("\n\n");
                 f=0;
             }
-
         }
         if(f==1)
             printf("Not Found\n\n");
-
     }
     else if(h==5)
     {
         int f=1;
         printf("Enter Phone number = ");
         scanf("%d",&f);
-        for(g=0; g<num; g++)
+        for(int g=0; g<num; g++)
         {
             if(f==x[g].phone)
             {
@@ -326,7 +317,6 @@ void search()
                 printf("\n\n");
                 f=0;
             }
-
         }
         if(f==1)
             printf("Not Found");
@@ -336,7 +326,7 @@ void search()
         int f=1;
         printf("Enter Age = ");
         scanf("%d",&f);
-        for(g=0; g<num; g++)
+        for(int g=0; g<num; g++)
         {
             if(f==x[g].age)
             {
@@ -350,18 +340,12 @@ void search()
                 printf("\n\n");
                 f=0;
             }
-
         }
         if(f==1)
             printf("Not Found\n\n");
-
     }
     else
         printf("\n\nInvalid input\n\n");
-
-
-
-
 }
 void del()
 {
@@ -408,11 +392,9 @@ void del()
         {
             x[f].phone=0;
         }
-
     }
     else
         printf("\n\nInvalid Serial number\n");
-
 }
 void read()
 {
@@ -426,7 +408,6 @@ void read()
         printf("File does not exist, I JUST CREATED IT, exiting...\n\n\n");
     
     }
-
     num = fread(x, sizeof(struct ad),200, fp);
     bed_count=bed_count-num;
     fclose(fp);
@@ -440,7 +421,6 @@ void read()
     }
     fread(y, sizeof(struct tests),1, fptr);
     fclose(fptr);
-    
 }
 void write()
 {
@@ -451,7 +431,6 @@ void write()
         exit(1);
     }
     fwrite(x, sizeof(struct ad),num, fp);
-
     fclose(fp);
     FILE *fptr = fopen("statistics.txt","wb+");
     if(fptr == NULL)
